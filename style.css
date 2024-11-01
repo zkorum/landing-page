@@ -207,6 +207,18 @@ dark-blue {
 .section-content {
 	margin-top: 80px;
 }
+.social-media-icon i {
+	display: block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	border-radius: 100px;
+	background:  linear-gradient(to left, #9ea6f8, #090f53);
+	color: #ffffff;
+	font-size: 50px;
+	line-height: 135px;
+	margin: 0 auto;
+}
 .icon-box {
 	margin-bottom:50px;
 }
@@ -476,8 +488,8 @@ logo {
 	margin: 0;
 }
 .download {
-	background: #7a60ff;
-	background: linear-gradient(to left, #7a60ff, #cd9ffa);
+	background: url(images/background.jpg);
+	background-size: cover;
 	padding:100px 0px;
 	position:relative;
 }
