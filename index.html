@@ -3,7 +3,19 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- meta description start -->
   <title>Agora</title>
+  <meta name="description" content="Citizen Network, Rather Than Social Network">
+  <meta name="keywords" content="civic tech, social network, peace">
+  <meta name="author" content="ZKorum">
+  <!-- meta description end -->
+  <!-- favicon start https://realfavicongenerator.net/ -->
+  <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/images/favicon/site.webmanifest" />
+  <!-- favicon end -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -51,7 +63,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-12">
-            <div class="banner-text">
+            <div class="banner-text my-3">
               <h2 class="dark-blue unbounded">Citizen Network, Rather Than Social Network</h2>
               <h4 class="dark-blue italic kepler-std">Purposefully designed for civic dialogues</h6>
                 <p class="banner-text dark-blue">Have you ever held back from important societal debates because it
@@ -63,12 +75,12 @@
                 <!--   <li><a href="#"><img src="images/playstore.png" class="wow fadeInUp" data-wow-delay="0.7s" /></a></li> -->
                 <!-- </ul> -->
                 <form name="contact" netlify>
-                  <input type="email" id="email" class="form-input w-50" name="email" placeholder="Email" required>
-                  <button class="btn-grad w-50 text-uppercase" type="submit" name="button">Join the Waitlist</button>
+                  <input type="email" id="email" class="form-input w-80" name="email" placeholder="Email" required>
+                  <button class="btn-grad w-80 text-uppercase" type="submit" name="button">Join the Waitlist</button>
                 </form>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12"> <img id="demo-image" src="images/Mockup-1-Feed.png"
+          <div class="col-md-4 col-sm-12 my-3"> <img id="demo-image" src="images/Mockup-1-Feed.png"
               class="img-fluid wow fadeInUp" /> </div>
         </div>
       </div>
@@ -334,8 +346,11 @@
           <div class="section-content">
             <div class="row">
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
-                <h4>What makes Agora different from other social networks?</h4>
-                <p>Unlike social networks built for entertainment or casual updates, Agora is purpose-built to foster
+                <h4><a data-toggle="collapse" href="#faq1" role="button" aria-expanded="true" aria-controls="faq1">What
+                    makes Agora different from other social networks?</a></h4>
+                <p class="collapse show" id="faq1">Unlike social networks built for entertainment or casual updates,
+                  Agora is
+                  purpose-built to foster
                   meaningful dialogue on important, often controversial topics. Tackling complex challenges like
                   polarization, <a href="https://navigator.oii.ox.ac.uk/what-is-comprop/" target="_blank"
                     rel="noopener noreferrer">computational propaganda</a>, balancing
@@ -344,27 +359,35 @@
                   random trolling and is scalable.
               </div>
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
-                <h4>What is moderation like on Agora?</h4>
-                <p>Moderation on Agora involves two types of content:</p>
-                <ul class="ml-4">
-                  <li>
-                    <p>Objective: this includes illegal content and spam, which will be removed by the Agora moderation
-                      team.</p>
-                  </li>
-                  <li>
-                    <p>Subjective: this includes content flagged as misleading, hateful, or off-topic, which will be
-                      moderated democratically by the community.</p>
-                  </li>
-                </ul>
+                <h4><a data-toggle="collapse" href="#faq2" role="button" aria-expanded="true" aria-controls="faq2">What
+                    is moderation like on Agora?</a></h4>
+                <div class="collapse show" id="faq2">
+                  <p>Moderation on Agora involves two types of content:</p>
+                  <ul class="ml-4">
+                    <li>
+                      <p>Objective: this includes illegal content and spam, which will be removed by the Agora
+                        moderation
+                        team.</p>
+                    </li>
+                    <li>
+                      <p>Subjective: this includes content flagged as misleading, hateful, or off-topic, which will be
+                        moderated democratically by the community.</p>
+                    </li>
+                  </ul>
 
-                <p>We believe in transparency, so even if moderated content is removed from the platform, its moderation
-                  history remains publicly accessible (unless it contains illegal material or personal details) and can
-                  be verified through a decentralized network, <a rel="noopener noreferrer" target="_blank"
-                    href="https://nostr.com/">Nostr</a>.</p>
+                  <p>We believe in transparency, so even if moderated content is removed from the platform, its
+                    moderation
+                    history remains publicly accessible (unless it contains illegal material or personal details) and
+                    can
+                    be verified through a decentralized network, <a rel="noopener noreferrer" target="_blank"
+                      href="https://nostr.com/">Nostr</a>.</p>
+                </div>
               </div>
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
-                <h4>How do you ensure humans only?</h4>
-                <p>In a world where bots outnumber humans, Agora aims to maintain the integrity of dialogues while
+                <h4><a data-toggle="collapse" href="#faq3" role="button" aria-expanded="true" aria-controls="faq3">How
+                    do you ensure humans only?</a></h4>
+                <p class="collapse show" id="faq3">In a world where bots outnumber humans, Agora aims to maintain the
+                  integrity of dialogues while
                   preserving user privacy by being compatible with <a
                     href="https://blog.identity.foundation/balancing-online-trustworthiness-and-anonymity-with-personhood-credentials/"
                     target="_blank" rel="noopener noreferrer">Personhood Credentials</a>. They allow users to prove
@@ -375,8 +398,10 @@
                   identity using their phone numbers.</p>
               </div>
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
-                <h4>What do depolarizing algorithms mean?</h4>
-                <p>Most social networks today use engagement-based ranking algorithms designed to maximize user
+                <h4><a data-toggle="collapse" href="#faq4" role="button" aria-expanded="true" aria-controls="faq4">What
+                    do depolarizing algorithms mean?</a></h4>
+                <p class="collapse show" id="faq4">Most social networks today use engagement-based ranking algorithms
+                  designed to maximize user
                   attention and engagement. Unfortunately, these algorithms often promote polarizing content, which
                   tends to attract the most attention, whether good or bad. In contrast, Agora employs <a
                     href="https://www.belfercenter.org/publication/bridging-based-ranking" target="_blank"
@@ -388,15 +413,18 @@
                     target="_blank" rel="noopener noreferrer">Polis</a>.</p>
               </div>
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
-                <h4>What is open-source?</h4>
-                <p>Agora is fully <a rel="noopener noreferrer" target="_blank"
+                <h4><a data-toggle="collapse" href="#faq5" role="button" aria-expanded="true" aria-controls="faq5">What
+                    is open-source?</a></h4>
+                <p class="collapse show" id="faq5">Agora is fully <a rel="noopener noreferrer" target="_blank"
                     href="https://github.com/zkorum">open-source</a> under the AGPL license, which means that anyone is
                   invited to review and audit our codebase. This approach maximizes transparency while still allowing us
                   to have a sustainable business model.
               </div>
               <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
-                <h4>What is ZKorum?</h4>
-                <p>Agora is developed and maintained by ZKorum, a Paris-based civic tech startup dedicated to building
+                <h4><a data-toggle="collapse" href="#faq6" role="button" aria-expanded="true" aria-controls="faq6">What
+                    is ZKorum?</a></h4>
+                <p class="collapse show" id="faq6">Agora is developed and maintained by ZKorum, a Paris-based civic tech
+                  startup dedicated to building
                   open-source solutions and products that rehumanize and depolarize the online social landscape.</p>
               </div>
             </div>
@@ -487,8 +515,8 @@
           </div>
           <div class="mt-4 sectioner-header text-center col-md-12">
             <form name=" contact" netlify>
-              <input type="email" id="email" class="form-input w-50" name="email" placeholder="Email" required>
-              <button class="btn-grad w-50 text-uppercase" type="submit" name="button">Join the Waitlist</button>
+              <input type="email" id="email" class="form-input w-80" name="email" placeholder="Email" required>
+              <button class="btn-grad w-80 text-uppercase" type="submit" name="button">Join the Waitlist</button>
             </form>
             <ul class="mt-5">
               <li class="mx-3"><a rel="noopener noreferrer" target="_blank" href="https://discord.gg/cAkAJQSTEU"><i
