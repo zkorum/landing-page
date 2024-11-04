@@ -36,8 +36,8 @@
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
-    <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img
-          src="images/Logo_Full_Zkorum_DarkBlue.png" width="160" class="logo-1"> </a>
+    <div class="container"> <a class="navbar-brand navbar-logo" href="#"> <img src="images/big_logo_agora.png"
+          class="logo-1"> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
           class="fa-solid fa-bars" alt="Menu"></span> </button>
@@ -58,7 +58,7 @@
   <!-------Banner Start------->
   <section class="banner" data-scroll-index='0'>
     <div class="banner-overlay">
-      <div class="mt-4 container">
+      <div class="mt-5 container">
         <div class="row">
           <div class="col-md-8 col-sm-12">
             <div class="banner-text my-3">
@@ -642,13 +642,13 @@
         navbarBrand = $(".navbar-brand");
 
       if (bodyScroll > 50) {
-        // $('.navbar-logo img').attr('src', 'images/Icon_DarkBlue.png').attr('width', '50px');
-        $('.navbar-logo img').removeAttr('src').show();
+        $('.navbar-logo img').attr('src', 'images/small_logo_agora.png');
+        // $('.navbar-logo img').removeAttr('src').show();
         navbar.addClass("nav-scroll");
         navbarBrand.addClass("ml-2")
 
       } else {
-        $('.navbar-logo img').attr('src', 'images/Logo_Full_Zkorum_DarkBlue.png').attr('width', '160px');
+        $('.navbar-logo img').attr('src', 'images/big_logo_agora.png');
         navbar.removeClass("nav-scroll");
         navbarBrand.removeClass("ml-2")
       }
@@ -660,12 +660,12 @@
         navbarBrand = $(".navbar-brand");
 
       if (bodyScroll > 50) {
-        // $('.navbar-logo img').attr('src', 'images/Icon_DarkBlue.png').attr('width', '50px').attr();
-        $('.navbar-logo img').removeAttr('src').show();
+        $('.navbar-logo img').attr('src', 'images/small_logo_agora.png').attr();
+        // $('.navbar-logo img').attr('src').show();
         navbar.addClass("nav-scroll");
         navbarBrand.addClass("ml-2")
       } else {
-        $('.navbar-logo img').attr('src', 'images/Logo_Full_Zkorum_DarkBlue.png').attr('width', '160px');
+        $('.navbar-logo img').attr('src', 'images/big_logo_agora.png');
         navbar.removeClass("nav-scroll");
         navbarBrand.removeClass("ml-2")
       }
