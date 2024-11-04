@@ -614,6 +614,26 @@
         $('#demo-image-features').attr('src', images[currentIndex]);    // Update the src attribute
       }, 4000);
     });
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarCollapse = $('#navbarSupportedContent');
+      const navbarToggler = $('.navbar-toggler');
+
+      // Collapse the navbar on item click
+      $('.nav-link').on('click', function () {
+        if (navbarCollapse.hasClass('show')) {
+          navbarToggler.click(); // Programmatically toggle the navbar
+        }
+      });
+
+      // Collapse the navbar on click outside
+      $(document).on('click', function (event) {
+        const isClickInside = navbarCollapse[0].contains(event.target) || navbarToggler[0].contains(event.target);
+        if (!isClickInside && navbarCollapse.hasClass('show')) {
+          navbarToggler.click();
+        }
+      });
+    });
+
 
     $(window).on("scroll", function () {
 

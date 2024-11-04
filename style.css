@@ -76,6 +76,11 @@ dark-blue {
 .navbar .navbar-toggler {
 	cursor: pointer;
 }
+.navbar .navbar-toggler:focus {
+    /* thesre two are to avoid the rectangle thingy on the icon on click: */
+    outline: none;
+    /* box-shadow: none; */
+}
 .navbar .navbar-toggler span {
 	color: #090F53;
 }
