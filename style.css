@@ -88,7 +88,7 @@ dark-blue {
 	display: none;
 }
 .nav-scroll {
-	background: rgba(255, 255, 255, 0);
+	background: rgba(255, 255, 255, 0.7);
 	/* -webkit-box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509803922); */
 	/* box-shadow: 0 1px 8px 3px rgba(0, 0, 0, 0.0509803922); */
 	-webkit-transition: all .4s ease;
@@ -109,6 +109,7 @@ dark-blue {
 }
 .nav-scroll .nav-link:hover:after {
 	background-color: #2388ed;
+	/* TODO: figure out this colour */
 }
 .nav-scroll .active {
 	position: relative;
@@ -537,14 +538,15 @@ logo {
 	overflow: auto;
 	/* background:  rgb(213, 198, 221); */
 	/* background: url(images/background.jpg); */
-	background: url(images/background.jpg);
+	background: rgba(255, 255, 255);
 	/* color: #fff !important; */
 	text-align: center;
 	padding: 10px 0;
 }
 .nav-scroll .navbar-collapse {
 	/* background: #fff !important; */
-	background: url(images/background.jpg);
+	/* background: url(images/background.jpg); */
+	background: rgba(255, 255, 255);
 }
 #contact_form {
 	margin-bottom:20px;
