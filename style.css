@@ -62,9 +62,11 @@ dark-blue {
 	margin-left: 16px;
 }
 .width-trusted {
-	width: 220px;
+    width: 220px;
     margin: auto;
     display: block;
+    max-width: 100%; /* Ensures images are responsive */
+
 }
 .navbar .nav-item a:hover {
 	color:#d96f2d;
