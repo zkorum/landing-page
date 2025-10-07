@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/feed/*"
+to = "https://www.agoracitizen.app/:splat"
+status = 301
+force = true
