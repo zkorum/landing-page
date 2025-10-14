@@ -198,6 +198,9 @@ const t = (key: string) => {
       <a class="navbar-brand navbar-logo" href={localeUrl("/")}>
         <img src="/images/big_logo_agora.png" class="logo-1" alt="Agora Logo">
       </a>
+      <div class="mobile-only-language-switcher">
+        <LanguageSwitcher />
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="fa-solid fa-bars" alt="Menu"></span>
@@ -212,7 +215,7 @@ const t = (key: string) => {
           <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#partners`}>{t("nav.partners")}</a> </li>
           <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#faq`}>{t("nav.faq")}</a> </li>
           <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#try-agora`}>{t("nav.try_now")}</a> </li>
-          <li class="nav-item">
+          <li class="nav-item desktop-only-language-switcher">
             <LanguageSwitcher />
           </li>
         </ul>

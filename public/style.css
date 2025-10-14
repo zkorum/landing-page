@@ -89,6 +89,40 @@ dark-blue {
 .navbar .navbar-toggler span {
 	color: #090F53;
 }
+/* Hide mobile language switcher by default */
+.mobile-only-language-switcher {
+	display: none;
+}
+/* Desktop: hide mobile switcher, show desktop switcher */
+@media (min-width: 992px) {
+	.mobile-only-language-switcher {
+		display: none;
+	}
+	.desktop-only-language-switcher {
+		display: block;
+	}
+}
+/* Mobile: show mobile switcher positioned next to hamburger, hide desktop switcher */
+@media (max-width: 991px) {
+	.navbar > .container {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.mobile-only-language-switcher {
+		display: block;
+		position: absolute;
+		right: 60px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 1;
+	}
+	.desktop-only-language-switcher {
+		display: none;
+	}
+}
 .navbar-style2 .active:after, .navbar-style2 .nav-link:after {
 	display: none;
 }
