@@ -19,14 +19,14 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
 ---
 
 <div class="language-switcher">
-  <button class="language-button" id="language-button" aria-label="Select language">
+  <button class="language-button" aria-label="Select language">
     <span class="current-language">
       <span class="language-name">{languages.find(l => l.code === currentLocale)?.name || 'Language'}</span>
     </span>
     <i class="fa-solid fa-chevron-down"></i>
   </button>
 
-  <div class="language-dropdown" id="language-dropdown" data-current-path={currentPath}>
+  <div class="language-dropdown" data-current-path={currentPath}>
     {languages.map(lang => {
       let url = getRelativeLocaleUrl(lang.code, currentPath);
       // Remove trailing slash to match trailingSlash: 'never' config
@@ -153,52 +153,56 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
 </style>
 
 <script>
-  // Language switcher dropdown functionality
+  // Language switcher dropdown functionality - supports multiple instances
   document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('language-button');
-    const dropdown = document.getElementById('language-dropdown');
+    const switchers = document.querySelectorAll('.language-switcher');
 
-    if (!button || !dropdown) return;
+    switchers.forEach(switcher => {
+      const button = switcher.querySelector('.language-button');
+      const dropdown = switcher.querySelector('.language-dropdown');
 
-    // Update language option URLs with current hash on page load and hash changes
-    const updateLanguageLinks = () => {
-      const hash = window.location.hash;
-      const languageOptions = dropdown.querySelectorAll('.language-option');
-      languageOptions.forEach(option => {
-        const baseUrl = option.getAttribute('data-base-url');
-        if (baseUrl) {
-          option.setAttribute('href', baseUrl + hash);
+      if (!button || !dropdown) return;
+
+      // Update language option URLs with current hash on page load and hash changes
+      const updateLanguageLinks = () => {
+        const hash = window.location.hash;
+        const languageOptions = dropdown.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+          const baseUrl = option.getAttribute('data-base-url');
+          if (baseUrl) {
+            option.setAttribute('href', baseUrl + hash);
+          }
+        });
+      };
+
+      // Update links immediately
+      updateLanguageLinks();
+
+      // Update links when hash changes
+      window.addEventListener('hashchange', updateLanguageLinks);
+
+      // Toggle dropdown
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('show');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target as Node) && !button.contains(e.target as Node)) {
+          dropdown.classList.remove('show');
         }
       });
-    };
 
-    // Update links immediately
-    updateLanguageLinks();
-
-    // Update links when hash changes
-    window.addEventListener('hashchange', updateLanguageLinks);
-
-    // Toggle dropdown
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle('show');
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target as Node) && e.target !== button) {
-        dropdown.classList.remove('show');
-      }
-    });
-
-    // Save language preference to localStorage when clicking a language
-    const languageOptions = dropdown.querySelectorAll('.language-option');
-    languageOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        const lang = option.getAttribute('data-lang');
-        if (lang) {
-          localStorage.setItem('agora-language', lang);
-        }
+      // Save language preference to localStorage when clicking a language
+      const languageOptions = dropdown.querySelectorAll('.language-option');
+      languageOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const lang = option.getAttribute('data-lang');
+          if (lang) {
+            localStorage.setItem('agora-language', lang);
+          }
+        });
       });
     });
   });
