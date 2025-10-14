@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "why_agora": "Pourquoi Agora ?",
+    "features": "Fonctionnalités",
+    "blog": "Blog",
+    "team": "Équipe",
+    "partners": "Partenaires",
+    "faq": "FAQ",
+    "try_now": "Essayez maintenant"
+  },
+  "footer": {
+    "copyright": "2024 © ZKorum SAS",
+    "legal_notice": "Mentions légales"
+  }
+}

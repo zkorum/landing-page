@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale || 'en';
+
+const localeUrl = (path: string) => {
+  const url = getRelativeLocaleUrl(currentLocale, path);
+  return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+};
+
+// Load translations for 404 page
+const translationModules = {
+  'en': () => import('../../public/locales/en/404.json'),
+  'fr': () => import('../../public/locales/fr/404.json'),
+  'es': () => import('../../public/locales/es/404.json'),
+  'ar': () => import('../../public/locales/ar/404.json'),
+  'ja': () => import('../../public/locales/ja/404.json'),
+  'zh-hans': () => import('../../public/locales/zh-hans/404.json'),
+  'zh-hant': () => import('../../public/locales/zh-hant/404.json'),
+};
+
+const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
+const translations = translationModule.default;
+
+const t = (key: string) => {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value || key;
+};
+---
+
+<BaseLayout
+  title={t("meta.title")}
+  description={t("meta.description")}
+>
+  <section class="error-404 section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="error-content text-center">
+            <div class="error-code wow fadeInUp" data-wow-delay="0.2s">
+              <h1 class="dark-blue unbounded">{t("title")}</h1>
+            </div>
+            <div class="error-message wow fadeInUp" data-wow-delay="0.4s">
+              <h2 class="dark-blue">{t("subtitle")}</h2>
+              <p class="dark-blue">{t("description")}</p>
+            </div>
+            <div class="error-action wow fadeInUp" data-wow-delay="0.6s">
+              <a href={localeUrl("/")} class="btn-grad text-uppercase" role="button">
+                {t("button")}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-404 {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+
+  .error-content {
+    padding: 3rem 1rem;
+  }
+
+  .error-code h1 {
+    font-size: 10rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .error-message h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .error-message p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .error-action a {
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .error-action a:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 768px) {
+    .error-code h1 {
+      font-size: 6rem;
+    }
+
+    .error-message h2 {
+      font-size: 1.8rem;
+    }
+
+    .error-message p {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,504 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale || 'en';
+
+// Helper function to create locale-aware URLs without trailing slashes
+const localeUrl = (path: string) => {
+  const url = getRelativeLocaleUrl(currentLocale, path);
+  return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+};
+
+// Load translations for index page
+const translationModules = {
+  'en': () => import('../../public/locales/en/index.json'),
+  'fr': () => import('../../public/locales/fr/index.json'),
+  'es': () => import('../../public/locales/es/index.json'),
+  'ar': () => import('../../public/locales/ar/index.json'),
+  'ja': () => import('../../public/locales/ja/index.json'),
+  'zh-hans': () => import('../../public/locales/zh-hans/index.json'),
+  'zh-hant': () => import('../../public/locales/zh-hant/index.json'),
+};
+
+const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
+const translations = translationModule.default;
+
+const t = (key: string) => {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value || key;
+};
+---
+
+<BaseLayout
+  title={t("meta.title")}
+  description={t("meta.description")}
+>
+  <!-------Banner Start------->
+  <section class="banner" data-scroll-index='0'>
+    <div class="banner-overlay">
+      <div class="mt-5 container">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <div class="banner-text my-3">
+              <h2 class="dark-blue unbounded">{t("banner.title")}</h2>
+              <h4 class="dark-blue italic kepler-std">{t("banner.subtitle")}</h4>
+              <p class="banner-text dark-blue">{t("banner.description")}</p>
+              <a href="https://www.agoracitizen.app/" class="btn-grad text-uppercase" role="button"
+                style="text-decoration: none; padding: 0.7rem 2rem; display: inline-block; border-radius: 2rem;">{t("banner.join_button")}</a>
+              <div class="mt-3">
+                <a href={localeUrl("/blog")} class="text-uppercase" role="button"
+                  style="text-decoration: none; padding: 0.7rem 2rem; display: inline-block; border-radius: 2rem; color: #d96f2d; border: 2px solid #d96f2d; background: transparent;">{t("banner.view_impact_button")}</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12 my-3"> <img id="demo-image" src="/images/Mockup-1-Feed.png"
+              class="img-fluid wow fadeInUp" style="max-width:100%; height: auto;" alt="Agora mockup" /> </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Banner End------->
+
+  <!-------About Start------->
+  <section class="about section-padding prelative" data-scroll-index='1' id="why-agora">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>{t("why_agora.title")}</h3>
+            <span class="line"></span>
+            <p>{t("why_agora.description")}</p>
+          </div>
+          <div class="section-content text-center">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"><i class="fa-solid fa-users"
+                    aria-hidden="true"></i>
+                  <h5>{t("why_agora.for_citizens_title")}</h5>
+                  <p>{t("why_agora.for_citizens_desc")}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"> <i class="fa-solid fa-building-columns"
+                    aria-hidden="true"></i>
+                  <h5>{t("why_agora.for_facilitators_title")}</h5>
+                  <p>{t("why_agora.for_facilitators_desc")}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------About End------->
+
+  <!-------Features Start------->
+  <section class="feature section-padding" data-scroll-index='2' id="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>{t("features.title")}</h3>
+            <span class="line"></span>
+            <p>100% <a rel="noopener noreferrer" target="_blank" href="https://github.com/zkorum">{t("features.open_source")}</a>
+            </p>
+          </div>
+          <div class="section-content text-center">
+            <div class="row">
+              <div class="col-md-4 col-sm-12">
+                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="media-body text-right media-right-margin">
+                    <h5>{t("features.exclusively_human_title")}</h5>
+                    <p>{t("features.exclusively_human_desc")}</p>
+                  </div>
+                  <div class="media-right icon-border"> <span class="fa-solid fa-heartbeat" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="media-body text-right media-right-margin">
+                    <h5>{t("features.privacy_first_title")}</h5>
+                    <p>{t("features.privacy_first_desc")} <a href="https://rarime.com/" target="_blank"
+                        rel="noopener noreferrer">RariMe</a></p>
+                  </div>
+                  <div class="media-right icon-border"> <span class="fa-solid fa-mask" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 d-none d-md-block d-lg-block">
+                <div class="feature-mobile"> <img id="demo-image-features" src="/images/Mockup-1-Feed.png"
+                    class="img-fluid wow fadeInUp" style="max-width:100%; height: auto;" alt="Agora features" /> </div>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="media-left icon-border media-right-margin"> <span class="fa-solid fa-handshake"
+                      aria-hidden="true"></span> </div>
+                  <div class="media-body text-left">
+                    <h5>{t("features.depolarizing_algorithms_title")}</h5>
+                    <p>{t("features.depolarizing_algorithms_desc")}</p>
+                  </div>
+                </div>
+                <div class="media single-feature wow fadeInUp" data-wow-delay="0.2s">
+                  <div class="media-left icon-border media-right-margin"> <span class="fa-solid fa-user-edit"
+                      aria-hidden="true"></span> </div>
+                  <div class="media-body text-left">
+                    <h5>{t("features.open_governance_title")}</h5>
+                    <p>{t("features.open_governance_desc")}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Features End------->
+
+  <!-------Blog Start------->
+  <section class="blog section-padding prelative" data-scroll-index='3'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>{t("blog_section.title")}</h3>
+            <span class="line"></span>
+            <p>{t("blog_section.description")}</p>
+          </div>
+          <div class="section-content text-center">
+            <div class="row">
+              <div class="col-md-6 offset-md-3 mb-4">
+                <a href={localeUrl("/blog/bloquonstout")} style="text-decoration: none; color: inherit;">
+                  <div class="featured-article" style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <img src="/images/bloquonstout-thumbnail.jpg" alt={t("blog_section.featured_article_title")} style="width: 100%; height: 200px; object-fit: cover; object-position: center 70%; display: block;">
+                    <div style="padding: 20px; text-align: left;">
+                      <h4 style="font-size: 18px; margin-bottom: 10px; color: #090F53; font-family: 'Unbounded', sans-serif; font-weight: 600;">{t("blog_section.featured_article_title")}</h4>
+                      <p style="color: #818992; font-size: 14px; line-height: 1.6; margin-bottom: 10px;">{t("blog_section.featured_article_desc")}</p>
+                      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span style="font-weight: 600; color: #d96f2d;">{t("blog_section.featured_article_author")}</span>
+                        <span style="color: #818992;">{t("blog_section.featured_article_date")}</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-12">
+                <a href={localeUrl("/blog")} class="about-btn">{t("blog_section.view_blog_button")}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Blog End------->
+
+  <!-------Team Start------->
+  <section class="team section-padding" data-scroll-index='4' id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>{t("team.title")}</h3>
+            <span class="line"></span>
+          </div>
+          <div class="section-content text-center">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="team-detail wow fadeInUp" data-wow-delay="0.2s"> <img src="/images/yuting.jpg"
+                    class="img-fluid" alt="Yuting Jiang" />
+                  <h4><a rel="noopener noreferrer" target="_blank"
+                      href="https://www.linkedin.com/in/yuting-jiang-zkorum/">Yuting Jiang</a></h4>
+                  <p>{t("team.ceo")}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-detail wow fadeInUp" data-wow-delay="0.2s"> <img src="/images/nicolas.jpg"
+                    class="img-fluid" alt="Nicolas Gimenez" />
+                  <h4><a rel="noopener noreferrer" target="_blank" href="https://bsky.app/profile/nicobao.dev">Nicolas
+                      Gimenez</a></h4>
+                  <p>{t("team.cto")}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-detail wow fadeInUp" data-wow-delay="0.2s"> <img src="/images/george.jpg"
+                    class="img-fluid" alt="George Charnley" />
+                  <h4><a rel="noopener noreferrer" target="_blank" href="https://www.georgecharnley.com/">George
+                      Charnley</a></h4>
+                  <p>{t("team.designer")}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Team End------->
+
+  <!-------Testimonial/Partners Start------->
+  <section class="testimonial section-padding" data-scroll-index='5' id="partners">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center dark-blue">
+            <h3>{t("partners.title")}</h3>
+            <span class="line"></span>
+          </div>
+
+          <div class="text-center">
+            <div class="partners-slider">
+              <div class="partners-track">
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://rarimo.com/">
+                    <img src="/images/rarimo.png" class="width-trusted" alt="Rarimo" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://bchain4hr.com/">
+                    <img src="/images/blockchain-for-human-rights.png" class="width-trusted" alt="Blockchain for Human Rights" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://savemyidentity.org/">
+                    <img src="/images/save-my-identity.png" class="width-trusted" alt="Save My Identity" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en">
+                    <img src="/images/eu.png" class="width-trusted" alt="EU Horizon Europe" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://ngi.eu/">
+                    <img src="/images/ngi.png" class="width-trusted" alt="NGI" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://thousandfaces.art/">
+                    <img src="/images/thousandfaces.webp" class="width-trusted" alt="Thousand Faces" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.frenchtech-grandparis.com/">
+                    <img src="/images/ft_blanc.png" class="width-trusted" alt="French Tech" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.info.gouv.fr/grand-dossier/france-2030">
+                    <img src="/images/france2030.png" class="width-trusted" alt="France 2030" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.bpifrance.fr/">
+                    <img src="/images/bpifrance.png" class="width-trusted" alt="BPI France" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.sheeos.fr/">
+                    <img src="/images/sheeos.webp" class="width-trusted" alt="SheEOs" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://stationf.co/">
+                    <img src="/images/stationf.png" class="width-trusted" alt="Station F" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.ville-demain.com/">
+                    <img src="/images/villededemain.png" class="width-trusted" alt="Ville de Demain" />
+                  </a>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://rarimo.com/">
+                    <img src="/images/rarimo.png" class="width-trusted" alt="Rarimo" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://bchain4hr.com/">
+                    <img src="/images/blockchain-for-human-rights.png" class="width-trusted" alt="Blockchain for Human Rights" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://savemyidentity.org/">
+                    <img src="/images/save-my-identity.png" class="width-trusted" alt="Save My Identity" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en">
+                    <img src="/images/eu.png" class="width-trusted" alt="EU Horizon Europe" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://ngi.eu/">
+                    <img src="/images/ngi.png" class="width-trusted" alt="NGI" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://thousandfaces.art/">
+                    <img src="/images/thousandfaces.webp" class="width-trusted" alt="Thousand Faces" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.frenchtech-grandparis.com/">
+                    <img src="/images/ft_blanc.png" class="width-trusted" alt="French Tech" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.info.gouv.fr/grand-dossier/france-2030">
+                    <img src="/images/france2030.png" class="width-trusted" alt="France 2030" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.bpifrance.fr/">
+                    <img src="/images/bpifrance.png" class="width-trusted" alt="BPI France" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.sheeos.fr/">
+                    <img src="/images/sheeos.webp" class="width-trusted" alt="SheEOs" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://stationf.co/">
+                    <img src="/images/stationf.png" class="width-trusted" alt="Station F" />
+                  </a>
+                </div>
+                <div class="partner-item">
+                  <a rel="noopener noreferrer" target="_blank" href="https://www.ville-demain.com/">
+                    <img src="/images/villededemain.png" class="width-trusted" alt="Ville de Demain" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3 sectioner-header text-center dark-blue">
+              <p class="dark-blue">{t("partners.eu_funding")}
+                <a href="https://trustchain.ngi.eu/" target="_blank"
+                  rel="noopener noreferrer">{t("partners.ngi_trustchain")}</a> {t("partners.program_under")}
+                <a href="https://ngisargasso.eu/" target="_blank" rel="noopener noreferrer">{t("partners.ngi_sargasso")}</a> {t("partners.project_under")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Testimonial/Partners End------->
+
+  <!-------FAQ Start------->
+  <section class="faq section-padding prelative" data-scroll-index='6' id="faq">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>{t("faq.title")}</h3>
+            <span class="line"></span>
+            <p>{t("faq.contact_intro")} <a rel="noopener noreferrer"
+                target="_blank" href="https://discord.gg/cAkAJQSTEU">{t("faq.discord")}</a>, <a rel="noopener noreferrer"
+                target="_blank" href="https://t.me/agorabyzkorum">{t("faq.telegram")}</a> {t("faq.or")} <a href="mailto:hello@zkorum.com"
+                target="_blank">{t("faq.email")}</a>!</p>
+          </div>
+          <div class="section-content">
+            <div class="row">
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
+                <h4><a data-toggle="collapse" href="#faq1" role="button" aria-expanded="true" aria-controls="faq1">{t("faq.q1")}</a></h4>
+                <p class="collapse" id="faq1">{t("faq.a1")}
+                </p>
+              </div>
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.2s">
+                <h4><a data-toggle="collapse" href="#faq2" role="button" aria-expanded="true" aria-controls="faq2">{t("faq.q2")}</a></h4>
+                <div class="collapse" id="faq2">
+                  <p>{t("faq.a2_intro")}</p>
+                  <ul class="ml-4">
+                    <li>
+                      <p>{t("faq.a2_objective_title")} {t("faq.a2_objective_desc")}</p>
+                    </li>
+                    <li>
+                      <p>{t("faq.a2_subjective_title")} {t("faq.a2_subjective_desc")}</p>
+                    </li>
+                  </ul>
+
+                  <p>{t("faq.a2_transparency")} <a rel="noopener noreferrer" target="_blank"
+                      href="https://nostr.com/">Nostr</a>.</p>
+                </div>
+              </div>
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
+                <h4><a data-toggle="collapse" href="#faq3" role="button" aria-expanded="true" aria-controls="faq3">{t("faq.q3")}</a></h4>
+                <p class="collapse" id="faq3">{t("faq.a3")}</p>
+              </div>
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.4s">
+                <h4><a data-toggle="collapse" href="#faq4" role="button" aria-expanded="true" aria-controls="faq4">{t("faq.q4")}</a></h4>
+                <p class="collapse" id="faq4">{t("faq.a4")}</p>
+              </div>
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
+                <h4><a data-toggle="collapse" href="#faq5" role="button" aria-expanded="true" aria-controls="faq5">{t("faq.q5")}</a></h4>
+                <p class="collapse" id="faq5">{t("faq.a5")}
+                </p>
+              </div>
+              <div class="col-md-6 faq-content wow fadeInUp" data-wow-delay="0.6s">
+                <h4><a data-toggle="collapse" href="#faq6" role="button" aria-expanded="true" aria-controls="faq6">{t("faq.q6")}</a></h4>
+                <p class="collapse" id="faq6">{t("faq.a6")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------FAQ End------->
+
+  <!-------Download/Try Now Start------->
+  <section class="download section-padding" data-scroll-index='7' id="try-agora">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center dark-blue">
+            <h3>{t("try_now.title")}</h3>
+            <span class="line"></span>
+          </div>
+          <div class="mt-4 sectioner-header text-center col-md-12">
+            <a href="https://www.agoracitizen.app" class="btn-grad w-80 text-uppercase" role="button"
+              style="text-decoration: none;">{t("try_now.join_button")}</a>
+            <ul class="mt-5 w-100">
+              <li class="mx-3"><a rel="noopener noreferrer" target="_blank" href="https://discord.gg/cAkAJQSTEU"><i
+                    class="fa-brands fa-discord " alt="Discord" style="font-size: 2rem; color: #5865F2;"></i>
+                </a></li>
+              <li class="mx-3"><a rel="noopener noreferrer" target="_blank" href="https://t.me/agorabyzkorum"><i
+                    class="fa-brands fa-telegram" alt="Telegram" style="font-size: 2rem; color: #229ED9;"></i></a></li>
+              <li class="mx-3"><a href="mailto:hello@zkorum.com" target="_blank"><i class="fa-solid fa-envelope"
+                    alt="Email" style="font-size: 2rem; color: black;"></i></a></li>
+              <li class="mx-3"><a href="https://github.com/zkorum" target="_blank"><i class="fa-brands fa-github"
+                    alt="GitHub" style="font-size: 2rem; color: #24292e;"></i></a></li>
+              <li class="mx-3"><a href="https://bsky.app/profile/agoracitizen.network" target="_blank"><i
+                    class="fa-brands fa-bluesky" alt="Bluesky" style="font-size: 2rem; color: #0886fe;"></i></a></li>
+              <li class="mx-3"><a href="https://x.com/AgoraCitizenNet" target="_blank"><i class="fa-brands fa-x-twitter"
+                    alt="X" style="font-size: 2rem; color: black;"></i></a></li>
+              <li class="mx-3"><a href="https://www.linkedin.com/company/zkorum" target="_blank"><i
+                    class="fa-brands fa-linkedin" alt="LinkedIn" style="font-size: 2rem; color: #0077B5;"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Download/Try Now End------->
+
+  <!-- Page-specific scripts -->
+  <script is:inline>
+    // Switch demo image every 4 seconds
+    const images = ["/images/Mockup-1-Feed.png", "/images/Mockup-2-Overview.png", "/images/Mockup-3-Overview.png", "/images/Mockup-4-Replies.png"];
+    let currentIndex = 0;
+
+    setInterval(function () {
+      currentIndex = (currentIndex + 1) % images.length;
+      $('#demo-image').attr('src', images[currentIndex]);
+      $('#demo-image-features').attr('src', images[currentIndex]);
+    }, 4000);
+  </script>
+</BaseLayout>

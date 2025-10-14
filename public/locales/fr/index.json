@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "title": "Agora Citizen Network",
+    "description": "Là où les citoyens convergent pour échanger et débattre des idées."
+  },
+  "banner": {
+    "title": "Réseau Citoyen, Plutôt Que Réseau Social",
+    "subtitle": "Conçu spécifiquement pour les dialogues civiques",
+    "description": "Là où les citoyens convergent pour échanger et débattre des idées. Transformons nos différences en progrès, plutôt qu'en conflit.",
+    "join_button": "Rejoindre le Dialogue",
+    "view_impact_button": "Voir Notre Impact"
+  },
+  "why_agora": {
+    "title": "Pourquoi Agora ?",
+    "description": "Agora permet aux citoyens, aux organisations et aux gouvernements de s'engager dans des discussions à grande échelle significatives sur les questions sociales et politiques.",
+    "for_citizens_title": "Pour les citoyens",
+    "for_citizens_desc": "Rejoignez les conversations qui comptent pour vous. Découvrez où les gens sont d'accord et en désaccord sur des sujets complexes et clivants.",
+    "for_facilitators_title": "Pour les facilitateurs et les organisations",
+    "for_facilitators_desc": "Découvrez ce qui unit votre communauté. Cartographiez les désaccords. Mesurez le consensus. Prenez de meilleures décisions."
+  },
+  "features": {
+    "title": "Fonctionnalités",
+    "open_source": "open-source",
+    "exclusively_human_title": "Exclusivement Humain",
+    "exclusively_human_desc": "Rejoignez un environnement sans bots ni leur propagande",
+    "privacy_first_title": "La Vie Privée d'Abord",
+    "privacy_first_desc": "Nous protégeons votre droit à l'anonymat. Vous pouvez vérifier votre humanité sans révéler votre identité en utilisant",
+    "depolarizing_algorithms_title": "Algorithmes Dépolarisants",
+    "depolarizing_algorithms_desc": "Engagez-vous avec des perspectives diverses pour construire un terrain d'entente",
+    "open_governance_title": "Gouvernance Ouverte",
+    "open_governance_desc": "Participez à une modération communautaire transparente"
+  },
+  "blog_section": {
+    "title": "Blog",
+    "description": "Histoires d'impact, actualités et guides pratiques pour utiliser Agora",
+    "featured_article_title": "Transformer la Frustration en Pouvoir Collectif",
+    "featured_article_desc": "Comment Agora a été utilisé pour transformer la mobilisation de masse en revendications démocratiques partagées lors de la grève #bloquonstout en France.",
+    "featured_article_author": "Équipe Agora",
+    "featured_article_date": "Septembre 2025",
+    "view_blog_button": "Voir Notre Blog"
+  },
+  "team": {
+    "title": "Notre Équipe",
+    "ceo": "PDG et Co-Fondateur",
+    "cto": "CTO et Co-Fondateur",
+    "designer": "Designer Produit"
+  },
+  "partners": {
+    "title": "Partenaires",
+    "eu_funding": "Ce projet a reçu un financement du programme de recherche et d'innovation Horizon Europe 2020 de l'Union européenne via le programme",
+    "ngi_trustchain": "NGI TRUSTCHAIN",
+    "program_under": "dans le cadre de l'accord de financement en cascade n° 101093274 et le projet",
+    "ngi_sargasso": "NGI SARGASSO",
+    "project_under": "dans le cadre de l'accord de subvention n° 101092887."
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "contact_intro": "Si votre question n'est pas couverte, n'hésitez pas à nous envoyer un message via",
+    "discord": "Discord",
+    "telegram": "Telegram",
+    "email": "email",
+    "or": "ou",
+    "q1": "Qu'est-ce qui différencie Agora des autres réseaux sociaux ?",
+    "a1": "Contrairement aux réseaux sociaux conçus pour le divertissement ou les mises à jour informelles, Agora est spécialement conçu pour favoriser un dialogue significatif sur des sujets importants et souvent controversés. En s'attaquant à des défis complexes tels que la polarisation, la propagande computationnelle, l'équilibre entre liberté d'expression et modération, Agora adopte des technologies innovantes et va au-delà des conceptions familières comme les fils de réponses traditionnels pour encourager un nouveau type d'interaction sociale qui empêche le trolling aléatoire et est évolutif.",
+    "q2": "Comment fonctionne la modération sur Agora ?",
+    "a2_intro": "La modération sur Agora couvre deux types de contenu :",
+    "a2_objective_title": "Objectif :",
+    "a2_objective_desc": "Contenu illégal ou spam, que l'équipe de modération d'Agora supprimera directement.",
+    "a2_subjective_title": "Subjectif :",
+    "a2_subjective_desc": "Contenu signalé comme trompeur, antisocial ou hors sujet, qui sera modéré démocratiquement par la communauté.",
+    "a2_transparency": "Nous croyons en la transparence, donc même si le contenu modéré est supprimé de la plateforme, son historique de modération reste accessible publiquement (sauf s'il contient du matériel illégal ou des détails personnels) et peut être vérifié via un réseau décentralisé,",
+    "q3": "Comment assurez-vous qu'il n'y ait que des humains ?",
+    "a3": "Dans un monde où les bots sont plus nombreux que les humains, Agora vise à maintenir l'intégrité des dialogues tout en préservant la vie privée des utilisateurs en encourageant l'utilisation de Credentials de Personnalité. Ils permettent aux utilisateurs de prouver des aspects de leur identité, tels que l'unicité de leur personne, leur âge et leur citoyenneté, sans divulguer aucune information personnelle. Actuellement, nos utilisateurs avec des passeports biométriques peuvent télécharger RariMe pour convertir leurs passeports en identifiants anonymes. En raison de cette contrainte technique temporaire, nous permettons également aux utilisateurs de vérifier leur identité en utilisant leurs numéros de téléphone.",
+    "q4": "Que signifient les algorithmes dépolarisants ?",
+    "a4": "La plupart des réseaux sociaux aujourd'hui utilisent des algorithmes de classement basés sur l'engagement conçus pour maximiser l'attention et l'engagement des utilisateurs. Malheureusement, ces algorithmes favorisent souvent le contenu polarisant, qui a tendance à attirer le plus d'attention, qu'elle soit bonne ou mauvaise. En revanche, Agora utilise des algorithmes de classement basés sur les ponts qui visent à mettre en évidence le contenu apprécié par les utilisateurs à travers différents points de vue politiques. L'objectif n'est pas de censurer les opinions extrêmes mais de préserver une riche diversité de points de vue et d'identifier un terrain d'entente. D'autres outils utilisant des algorithmes basés sur les ponts incluent Community Notes et Polis.",
+    "q5": "Qu'est-ce que l'open-source ?",
+    "a5": "Agora est entièrement open-source sous la licence AGPL, ce qui signifie que tout le monde est invité à examiner et auditer notre code. Cette approche maximise la transparence tout en nous permettant d'avoir un modèle commercial durable.",
+    "q6": "Qu'est-ce que ZKorum ?",
+    "a6": "Agora est développé et maintenu par ZKorum, une startup basée à Paris dédiée à la construction de solutions et de produits open-source qui réhumanisent et dépolarisent les interactions sociales en ligne. ZK fait référence à l'utilisation de la cryptographie de preuve à divulgation nulle de connaissance pour maximiser la confidentialité des utilisateurs et assurer la sécurité."
+  },
+  "try_now": {
+    "title": "Essayez Maintenant",
+    "join_button": "Rejoindre le Dialogue"
+  }
+}

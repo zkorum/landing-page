@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "首页",
+    "why_agora": "为什么选择Agora？",
+    "features": "功能",
+    "blog": "博客",
+    "team": "团队",
+    "partners": "合作伙伴",
+    "faq": "常见问题",
+    "try_now": "立即试用"
+  },
+  "footer": {
+    "copyright": "2024 © ZKorum SAS",
+    "legal_notice": "法律声明"
+  }
+}

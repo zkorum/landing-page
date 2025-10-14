@@ -1,0 +1,205 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale || 'en';
+
+const languages = [
+  { code: 'en', name: 'English' },
+  { code: 'fr', name: 'Français' },
+  { code: 'es', name: 'Español' },
+  { code: 'ar', name: 'العربية' },
+  { code: 'ja', name: '日本語' },
+  { code: 'zh-hans', name: '简体中文' },
+  { code: 'zh-hant', name: '繁體中文' },
+];
+
+// Get the current path without locale prefix, including hash if present
+let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l => l.code).join('|')})`), '') || '/';
+// Preserve hash fragments (they're not in pathname, so we'll handle them client-side)
+---
+
+<div class="language-switcher">
+  <button class="language-button" id="language-button" aria-label="Select language">
+    <span class="current-language">
+      <span class="language-name">{languages.find(l => l.code === currentLocale)?.name || 'Language'}</span>
+    </span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+
+  <div class="language-dropdown" id="language-dropdown" data-current-path={currentPath}>
+    {languages.map(lang => {
+      let url = getRelativeLocaleUrl(lang.code, currentPath);
+      // Remove trailing slash to match trailingSlash: 'never' config
+      const urlWithoutTrailingSlash = url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+      return (
+        <a
+          href={urlWithoutTrailingSlash}
+          class={`language-option ${currentLocale === lang.code ? 'active' : ''}`}
+          data-lang={lang.code}
+          data-base-url={urlWithoutTrailingSlash}
+        >
+          <span class="name">{lang.name}</span>
+          {currentLocale === lang.code && <i class="fa-solid fa-check"></i>}
+        </a>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  .language-button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #090F53;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    font-family: inherit;
+    font-weight: 400;
+  }
+
+  .language-button:hover {
+    color: #d96f2d;
+  }
+
+  .language-button i {
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  .current-language {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .language-name {
+    font-weight: 400;
+  }
+
+  .language-dropdown {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 0;
+    background: white;
+    border-radius: 4px;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 1000;
+    overflow: hidden;
+  }
+
+  .language-dropdown.show {
+    display: block;
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    color: #090F53;
+    text-decoration: none;
+    transition: background 0.15s ease;
+    cursor: pointer;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .language-option:hover {
+    background: rgba(9, 15, 83, 0.05);
+  }
+
+  .language-option.active {
+    background: rgba(217, 111, 45, 0.1);
+    color: #d96f2d;
+  }
+
+  .language-option .name {
+    flex: 1;
+    font-weight: 400;
+  }
+
+  .language-option i {
+    color: #d96f2d;
+    font-size: 12px;
+  }
+
+  /* Match nav-scroll styling */
+  .nav-scroll .language-button {
+    color: #090F53;
+  }
+
+  @media (max-width: 768px) {
+    .language-name {
+      display: none;
+    }
+
+    .language-switcher {
+      margin-left: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Language switcher dropdown functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('language-button');
+    const dropdown = document.getElementById('language-dropdown');
+
+    if (!button || !dropdown) return;
+
+    // Update language option URLs with current hash on page load and hash changes
+    const updateLanguageLinks = () => {
+      const hash = window.location.hash;
+      const languageOptions = dropdown.querySelectorAll('.language-option');
+      languageOptions.forEach(option => {
+        const baseUrl = option.getAttribute('data-base-url');
+        if (baseUrl) {
+          option.setAttribute('href', baseUrl + hash);
+        }
+      });
+    };
+
+    // Update links immediately
+    updateLanguageLinks();
+
+    // Update links when hash changes
+    window.addEventListener('hashchange', updateLanguageLinks);
+
+    // Toggle dropdown
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target as Node) && e.target !== button) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // Save language preference to localStorage when clicking a language
+    const languageOptions = dropdown.querySelectorAll('.language-option');
+    languageOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const lang = option.getAttribute('data-lang');
+        if (lang) {
+          localStorage.setItem('agora-language', lang);
+        }
+      });
+    });
+  });
+</script>
