@@ -34,35 +34,35 @@ to = "/blog"
 status = 301
 
 # Custom 404 pages for each locale
-# [[redirects]]
-#   from = "/fr/*"
-#   to = "/fr/404"
-#   status = 404
-#
-# [[redirects]]
-#   from = "/es/*"
-#   to = "/es/404"
-#   status = 404
-#
-# [[redirects]]
-#   from = "/ar/*"
-#   to = "/ar/404"
-#   status = 404
-#
-# [[redirects]]
-#   from = "/ja/*"
-#   to = "/ja/404"
-#   status = 404
-#
-# [[redirects]]
-#   from = "/zh-hans/*"
-#   to = "/zh-hans/404"
-#   status = 404
-#
-# [[redirects]]
-#   from = "/zh-hant/*"
-#   to = "/zh-hant/404"
-#   status = 404
+[[redirects]]
+from = "/fr/*"
+to = "/fr/404"
+status = 404
+
+[[redirects]]
+from = "/es/*"
+to = "/es/404"
+status = 404
+
+[[redirects]]
+from = "/ar/*"
+to = "/ar/404"
+status = 404
+
+[[redirects]]
+from = "/ja/*"
+to = "/ja/404"
+status = 404
+
+[[redirects]]
+from = "/zh-hans/*"
+to = "/zh-hans/404"
+status = 404
+
+[[redirects]]
+from = "/zh-hant/*"
+to = "/zh-hant/404"
+status = 404
 
 # Default 404 page for English (no prefix)
 [[redirects]]
