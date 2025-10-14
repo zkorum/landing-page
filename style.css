@@ -646,3 +646,53 @@ h3 {
 	font-size: 10px;
 }
 }
+
+/* Partners Scrolling Slider */
+.partners-slider {
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+	padding: 20px 0;
+}
+
+.partners-track {
+	display: flex;
+	gap: 60px;
+	animation: scroll 40s linear infinite;
+	width: max-content;
+}
+
+.partner-item {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 220px;
+}
+
+.partner-item a {
+	display: block;
+	pointer-events: auto;
+}
+
+.partner-item img {
+	transition: transform 0.3s ease;
+	display: block;
+}
+
+.partner-item a:hover img {
+	transform: scale(1.1);
+}
+
+.partners-track:hover {
+	animation-play-state: paused;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
