@@ -1,5 +1,71 @@
+[build]
+command = "npm run build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "22"
+
+# Redirect feed requests to the main app
 [[redirects]]
 from = "/feed/*"
 to = "https://www.agoracitizen.app/:splat"
 status = 301
 force = true
+
+# Redirect old HTML blog posts to new routes
+[[redirects]]
+from = "/blog-bloquonstout.html"
+to = "/blog/bloquonstout"
+status = 301
+
+[[redirects]]
+from = "/blog-facilitation-guide.html"
+to = "/blog/facilitation-guide"
+status = 301
+
+[[redirects]]
+from = "/blog-tech4nature.html"
+to = "/blog/tech4nature"
+status = 301
+
+[[redirects]]
+from = "/blog.html"
+to = "/blog"
+status = 301
+
+# Custom 404 pages for each locale
+[[redirects]]
+from = "/fr/*"
+to = "/fr/404"
+status = 404
+
+[[redirects]]
+from = "/es/*"
+to = "/es/404"
+status = 404
+
+[[redirects]]
+from = "/ar/*"
+to = "/ar/404"
+status = 404
+
+[[redirects]]
+from = "/ja/*"
+to = "/ja/404"
+status = 404
+
+[[redirects]]
+from = "/zh-hans/*"
+to = "/zh-hans/404"
+status = 404
+
+[[redirects]]
+from = "/zh-hant/*"
+to = "/zh-hant/404"
+status = 404
+
+# Default 404 page for English (no prefix)
+[[redirects]]
+from = "/*"
+to = "/404"
+status = 404

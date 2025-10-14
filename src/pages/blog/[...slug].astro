@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const currentLocale = Astro.currentLocale || 'en';
+
+export async function getStaticPaths() {
+  const allBlogEntries = await getCollection('blog');
+
+  const paths = [];
+
+  // For each blog entry, create a path that matches the locale it belongs to
+  for (const entry of allBlogEntries) {
+    // Extract the locale from the entry ID (e.g., "en/bloquonstout" -> "en")
+    const [entryLocale, ...slugParts] = entry.id.split('/');
+    const slug = slugParts.join('/').replace('.md', '');
+
+    paths.push({
+      params: { slug },
+      props: { entry, entryLocale },
+    });
+  }
+
+  return paths;
+}
+
+const { entry, entryLocale } = Astro.props;
+
+// If the current locale doesn't match the entry's locale, find the correct translation
+// or use fallback
+let displayEntry = entry;
+if (currentLocale !== entryLocale) {
+  const allBlogEntries = await getCollection('blog');
+  const slug = entry.slug.replace(`${entryLocale}/`, '');
+
+  // Try to find the blog post in the current locale
+  const translatedEntry = allBlogEntries.find(e =>
+    e.id.startsWith(`${currentLocale}/`) && e.slug.includes(slug)
+  );
+
+  if (translatedEntry) {
+    displayEntry = translatedEntry;
+  }
+  // If no translation exists, keep the original (fallback behavior)
+}
+
+const { Content } = await displayEntry.render();
+---
+
+<BlogLayout
+  title={displayEntry.data.title}
+  description={displayEntry.data.description}
+  author={displayEntry.data.author}
+  date={displayEntry.data.date}
+  image={displayEntry.data.image}
+>
+  <Content />
+</BlogLayout>

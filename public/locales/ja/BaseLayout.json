@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "why_agora": "なぜアゴラ？",
+    "features": "機能",
+    "blog": "ブログ",
+    "team": "チーム",
+    "partners": "パートナー",
+    "faq": "よくある質問",
+    "try_now": "今すぐ試す"
+  },
+  "footer": {
+    "copyright": "2024 © ZKorum SAS",
+    "legal_notice": "法的通知"
+  }
+}

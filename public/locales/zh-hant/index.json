@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "title": "Agora Citizen Network",
+    "description": "公民匯聚交流和辯論思想的地方。"
+  },
+  "banner": {
+    "title": "公民網絡,而非社交網絡",
+    "subtitle": "專為公民對話而設計",
+    "description": "公民匯聚交流和辯論思想的地方。讓我們將分歧轉化為進步,而非衝突。",
+    "join_button": "加入對話",
+    "view_impact_button": "查看我們的影響"
+  },
+  "why_agora": {
+    "title": "為什麼選擇Agora?",
+    "description": "Agora使公民、組織和政府能夠就社會和政治問題進行有意義的大規模討論。",
+    "for_citizens_title": "為公民",
+    "for_citizens_desc": "加入對您重要的對話。了解人們在複雜、分裂性話題上的一致和分歧之處。",
+    "for_facilitators_title": "為推動者和組織",
+    "for_facilitators_desc": "發現團結您社區的因素。繪製分歧地圖。衡量共識。做出更好的決策。"
+  },
+  "features": {
+    "title": "功能",
+    "open_source": "開源",
+    "exclusively_human_title": "純人類",
+    "exclusively_human_desc": "加入一個沒有機器人及其宣傳的環境",
+    "privacy_first_title": "隱私優先",
+    "privacy_first_desc": "我們保護您的匿名權。您可以在不透露身份的情況下使用以下方式驗證您的人性",
+    "depolarizing_algorithms_title": "去極化演算法",
+    "depolarizing_algorithms_desc": "與多元觀點互動,建立共同基礎",
+    "open_governance_title": "開放治理",
+    "open_governance_desc": "參與透明的社區驅動審核"
+  },
+  "blog_section": {
+    "title": "部落格",
+    "description": "影響力故事、新聞和使用Agora的實用指南",
+    "featured_article_title": "將沮喪轉化為集體力量",
+    "featured_article_desc": "Agora如何在法國#bloquonstout罷工期間被用於將大規模動員轉化為共同的民主訴求。",
+    "featured_article_author": "Agora團隊",
+    "featured_article_date": "2025年9月",
+    "view_blog_button": "查看我們的部落格"
+  },
+  "team": {
+    "title": "我們的團隊",
+    "ceo": "執行長兼共同創辦人",
+    "cto": "技術長兼共同創辦人",
+    "designer": "產品設計師"
+  },
+  "partners": {
+    "title": "合作夥伴",
+    "eu_funding": "該專案通過",
+    "ngi_trustchain": "NGI TRUSTCHAIN",
+    "program_under": "計畫獲得歐盟Horizon Europe 2020研究與創新計畫的資助,級聯資助協議編號101093274和",
+    "ngi_sargasso": "NGI SARGASSO",
+    "project_under": "專案,贈款協議編號101092887。"
+  },
+  "faq": {
+    "title": "常見問題",
+    "contact_intro": "如果您的問題未得到解答,請隨時透過以下方式向我們發送訊息",
+    "discord": "Discord",
+    "telegram": "Telegram",
+    "email": "電子郵件",
+    "or": "或",
+    "q1": "Agora與其他社交網絡有何不同?",
+    "a1": "與為娛樂或隨意更新而構建的社交網絡不同,Agora專門構建用於促進關於重要且通常有爭議的話題的有意義對話。應對極化、計算宣傳、平衡言論自由和審核等複雜挑戰,Agora採用創新技術,超越傳統回覆樹等熟悉設計,鼓勵一種防止隨機惡意破壞且可擴展的新型社交互動。",
+    "q2": "Agora的審核是怎樣的?",
+    "a2_intro": "Agora的審核涵蓋兩種類型的內容:",
+    "a2_objective_title": "客觀:",
+    "a2_objective_desc": "非法內容或垃圾郵件,Agora審核團隊將直接刪除。",
+    "a2_subjective_title": "主觀:",
+    "a2_subjective_desc": "被標記為誤導性、反社會或離題的內容,將由社區民主審核。",
+    "a2_transparency": "我們相信透明度,因此即使審核內容從平台上刪除,其審核歷史仍保持公開可訪問(除非包含非法材料或個人詳細資訊),並可通過去中心化網絡驗證,",
+    "q3": "如何確保只有人類?",
+    "a3": "在機器人數量超過人類的世界中,Agora旨在透過鼓勵使用人格憑證來維護對話的完整性,同時保護使用者隱私。它們允許使用者證明其身份的某些方面,例如獨特的人格、年齡和公民身份,而無需向我們披露任何個人資訊。目前,擁有生物識別護照的使用者可以下載RariMe將其護照轉換為匿名憑證。由於這一暫時的技術限制,我們也允許使用者使用電話號碼驗證其身份。",
+    "q4": "去極化演算法是什麼意思?",
+    "a4": "如今大多數社交網絡使用基於參與度的排名演算法,旨在最大化使用者注意力和參與度。不幸的是,這些演算法經常推廣極化內容,無論好壞,往往會吸引最多的注意力。相比之下,Agora採用基於橋接的排名演算法,旨在突出顯示受不同政治觀點使用者欣賞的內容。目標不是審查極端意見,而是保留豐富多樣的觀點並識別共同基礎。其他使用基於橋接的演算法的工具包括Community Notes和Polis。",
+    "q5": "什麼是開源?",
+    "a5": "Agora在AGPL許可證下完全開源,這意味著任何人都可以審查和審計我們的程式碼庫。這種方法在最大化透明度的同時,仍然允許我們擁有可持續的商業模式。",
+    "q6": "什麼是ZKorum?",
+    "a6": "Agora由ZKorum開發和維護,這是一家總部位於巴黎的新創公司,致力於構建開源解決方案和產品,使線上社交互動重新人性化並去極化。ZK指的是使用零知識證明密碼學來最大化使用者隱私並確保安全性。"
+  },
+  "try_now": {
+    "title": "立即嘗試",
+    "join_button": "加入對話"
+  }
+}

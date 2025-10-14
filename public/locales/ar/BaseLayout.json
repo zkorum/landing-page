@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "why_agora": "لماذا أغورا؟",
+    "features": "الميزات",
+    "blog": "المدونة",
+    "team": "الفريق",
+    "partners": "الشركاء",
+    "faq": "الأسئلة الشائعة",
+    "try_now": "جربها الآن"
+  },
+  "footer": {
+    "copyright": "2024 © ZKorum SAS",
+    "legal_notice": "إشعار قانوني"
+  }
+}

@@ -1,0 +1,316 @@
+---
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+}
+
+const { title, description, image = "https://www.agoracitizen.network/images/favicon/thumbnail_2_1.png", type = "website" } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : `https://www.agoracitizen.network${Astro.url.pathname}`;
+const currentLocale = Astro.currentLocale || 'en';
+
+// Helper function to create locale-aware URLs without trailing slashes
+const localeUrl = (path: string) => {
+  const url = getRelativeLocaleUrl(currentLocale, path);
+  return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+};
+
+// Load translations for BaseLayout - import JSON directly from public folder
+const translationModules = {
+  'en': () => import('../../public/locales/en/BaseLayout.json'),
+  'fr': () => import('../../public/locales/fr/BaseLayout.json'),
+  'es': () => import('../../public/locales/es/BaseLayout.json'),
+  'ar': () => import('../../public/locales/ar/BaseLayout.json'),
+  'ja': () => import('../../public/locales/ja/BaseLayout.json'),
+  'zh-hans': () => import('../../public/locales/zh-hans/BaseLayout.json'),
+  'zh-hant': () => import('../../public/locales/zh-hant/BaseLayout.json'),
+};
+
+const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
+const translations = translationModule.default;
+
+const t = (key: string) => {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value || key;
+};
+---
+
+<!DOCTYPE html>
+<html lang={currentLocale}>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <!-- Client-side language detection and redirect (runs before page render) -->
+  <script is:inline>
+    (function() {
+      const supportedLocales = ['en', 'fr', 'es', 'ar', 'ja', 'zh-hans', 'zh-hant'];
+      const defaultLocale = 'en';
+      const currentPath = window.location.pathname;
+      const currentHash = window.location.hash;
+
+      // Map browser language codes to our supported locales
+      const localeMap = {
+        'en': 'en',
+        'fr': 'fr',
+        'es': 'es',
+        'ar': 'ar',
+        'ja': 'ja',
+        'zh': 'zh-hans',
+        'zh-CN': 'zh-hans',
+        'zh-Hans': 'zh-hans',
+        'zh-TW': 'zh-hant',
+        'zh-HK': 'zh-hant',
+        'zh-Hant': 'zh-hant',
+      };
+
+      // Function to detect locale from browser
+      function detectBrowserLocale() {
+        const browserLangs = navigator.languages || [navigator.language || navigator.userLanguage];
+
+        for (const lang of browserLangs) {
+          // Try exact match first
+          if (localeMap[lang]) {
+            return localeMap[lang];
+          }
+          // Try language code without region
+          const baseCode = lang.split('-')[0];
+          if (localeMap[baseCode]) {
+            return localeMap[baseCode];
+          }
+        }
+
+        return defaultLocale;
+      }
+
+      // Extract current locale from URL
+      const pathParts = currentPath.split('/').filter(Boolean);
+      const currentLocale = pathParts[0];
+
+      // Check if current path starts with a locale
+      const hasLocalePrefix = supportedLocales.includes(currentLocale);
+
+      // Determine if we're on a default locale path (no prefix = English)
+      const isDefaultLocalePath = !hasLocalePrefix && currentPath !== '/';
+
+      // Only redirect if we're on the root path or need to change locale
+      if (currentPath === '/') {
+        // Check localStorage for saved preference first
+        let targetLocale = localStorage.getItem('agora-language');
+
+        // If no saved preference, detect from browser
+        if (!targetLocale || !supportedLocales.includes(targetLocale)) {
+          targetLocale = detectBrowserLocale();
+          // Save the detected locale for next time
+          localStorage.setItem('agora-language', targetLocale);
+        }
+
+        // Only redirect if target is not the default locale
+        if (targetLocale !== defaultLocale) {
+          window.location.replace(`/${targetLocale}${currentHash}`);
+        }
+      } else if (isDefaultLocalePath) {
+        // We're on a default locale path like /blog
+        // Check if user preference is different from default
+        let targetLocale = localStorage.getItem('agora-language');
+
+        // If no saved preference, detect from browser
+        if (!targetLocale || !supportedLocales.includes(targetLocale)) {
+          targetLocale = detectBrowserLocale();
+          // Save the detected locale for next time
+          localStorage.setItem('agora-language', targetLocale);
+        }
+
+        // Only redirect if target locale is not default
+        if (targetLocale !== defaultLocale) {
+          window.location.replace(`/${targetLocale}${currentPath}${currentHash}`);
+        }
+      } else if (hasLocalePrefix) {
+        // We're on a locale-prefixed path like /fr/blog
+        // Save the locale preference
+        localStorage.setItem('agora-language', currentLocale);
+      }
+    })();
+  </script>
+
+  <!-- meta description start -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="keywords" content="civic tech, social network, peace">
+  <meta name="author" content="Agora Citizen Network">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:type" content={type}>
+  <meta property="og:site_name" content="Agora" />
+  <meta property="og:image" content={image}>
+  <meta property="og:image:secure_url" content={image} />
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="600" />
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content={canonicalURL}>
+  <meta property="twitter:site" content="@join_agora">
+  <meta property="twitter:title" content={title}>
+  <meta property="twitter:description" content={description}>
+  <meta property="twitter:image" content={image}>
+  <!-- meta description end -->
+
+  <!-- favicon start https://realfavicongenerator.net/ -->
+  <link rel="icon" type="image/png" href="/images/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/images/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+  <!-- favicon end -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="stylesheet" type="text/css" href="/blog.css" />
+  <!-- Our project just needs Font Awesome Solid + Brands -->
+  <link href="/css/fontawesome.css" rel="stylesheet" />
+  <link href="/css/brands.css" rel="stylesheet" />
+  <link href="/css/solid.css" rel="stylesheet" />
+  <!-- Font Google -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Unbounded' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Bricolage Grotesque' rel='stylesheet'>
+  <link href="https://fonts.cdnfonts.com/css/kepler-std" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer data-domain="agoracitizen.network" src="https://plausible.io/js/script.outbound-links.js"></script>
+  <script is:inline>window.plausible = window.plausible || function () {(window.plausible.q = window.plausible.q || []).push(arguments)}</script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand navbar-logo" href={localeUrl("/")}>
+        <img src="/images/big_logo_agora.png" class="logo-1" alt="Agora Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa-solid fa-bars" alt="Menu"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"> <a class="nav-link" href={localeUrl("/")}>{t("nav.home")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#why-agora`}>{t("nav.why_agora")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#features`}>{t("nav.features")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={localeUrl("/blog")}>{t("nav.blog")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#team`}>{t("nav.team")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#partners`}>{t("nav.partners")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#faq`}>{t("nav.faq")}</a> </li>
+          <li class="nav-item"> <a class="nav-link" href={`${localeUrl("/")}#try-agora`}>{t("nav.try_now")}</a> </li>
+          <li class="nav-item">
+            <LanguageSwitcher />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+  <!-- Main Content Slot -->
+  <slot />
+
+  <!-- Footer -->
+  <footer class="footer-copy">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <p>{t("footer.copyright")}</p>
+          <a href="https://www.notion.so/zkorum/Legal-notice-French-90ddbd5ebddc48de93512241a6157095"
+            rel="noopener noreferrer" target="_blank">{t("footer.legal_notice")}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script is:inline src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script is:inline src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <!-- scrollIt js -->
+  <script is:inline src="/js/scrollIt.min.js"></script>
+  <script is:inline src="/js/wow.min.js"></script>
+  <script is:inline>
+    wow = new WOW();
+    wow.init();
+
+    // Navbar collapse functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarCollapse = $('#navbarSupportedContent');
+      const navbarToggler = $('.navbar-toggler');
+
+      // Collapse the navbar on item click
+      $('.nav-link').on('click', function () {
+        if (navbarCollapse.hasClass('show')) {
+          navbarToggler.click();
+        }
+      });
+
+      // Collapse the navbar on click outside
+      $(document).on('click', function (event) {
+        const isClickInside = navbarCollapse[0].contains(event.target) || navbarToggler[0].contains(event.target);
+        if (!isClickInside && navbarCollapse.hasClass('show')) {
+          navbarToggler.click();
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    $(window).on("scroll", function () {
+      var bodyScroll = $(window).scrollTop(),
+        navbar = $(".navbar"),
+        navbarBrand = $(".navbar-brand");
+
+      if (bodyScroll > 50) {
+        $('.navbar-logo img').attr('src', '/images/small_logo_agora.png');
+        navbar.addClass("nav-scroll");
+        navbarBrand.addClass("ml-2")
+      } else {
+        $('.navbar-logo img').attr('src', '/images/big_logo_agora.png');
+        navbar.removeClass("nav-scroll");
+        navbarBrand.removeClass("ml-2")
+      }
+    });
+
+    $(window).on("load", function () {
+      var bodyScroll = $(window).scrollTop(),
+        navbar = $(".navbar"),
+        navbarBrand = $(".navbar-brand");
+
+      if (bodyScroll > 50) {
+        $('.navbar-logo img').attr('src', '/images/small_logo_agora.png');
+        navbar.addClass("nav-scroll");
+        navbarBrand.addClass("ml-2")
+      } else {
+        $('.navbar-logo img').attr('src', '/images/big_logo_agora.png');
+        navbar.removeClass("nav-scroll");
+        navbarBrand.removeClass("ml-2")
+      }
+
+      $.scrollIt({
+        easing: 'swing',
+        scrollTime: 900,
+        activeClass: 'active',
+        onPageChange: null,
+        topOffset: -63
+      });
+    });
+  </script>
+</body>
+</html>

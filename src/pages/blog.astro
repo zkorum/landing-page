@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale || 'en';
+
+// Helper function to create locale-aware URLs without trailing slashes
+const localeUrl = (path: string) => {
+  const url = getRelativeLocaleUrl(currentLocale, path);
+  return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+};
+
+// Load translations for blog page
+const translationModules = {
+  'en': () => import('../../public/locales/en/blog.json'),
+  'fr': () => import('../../public/locales/fr/blog.json'),
+  'es': () => import('../../public/locales/es/blog.json'),
+  'ar': () => import('../../public/locales/ar/blog.json'),
+  'ja': () => import('../../public/locales/ja/blog.json'),
+  'zh-hans': () => import('../../public/locales/zh-hans/blog.json'),
+  'zh-hant': () => import('../../public/locales/zh-hant/blog.json'),
+};
+
+const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
+const translations = translationModule.default;
+
+const t = (key: string) => {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value || key;
+};
+
+// Filter blog posts by current locale
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter(post => post.id.startsWith(`${currentLocale}/`));
+---
+
+<BaseLayout
+  title={t("meta.title")}
+  description={t("meta.description")}
+>
+  <!-- Blog Header -->
+  <section class="blog-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="unbounded dark-blue">{t("title")}</h1>
+          <p class="dark-blue">{t("subtitle")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="blog-grid">
+    <div class="container">
+      <div class="row">
+
+        {blogPosts.map((post) => {
+          // Remove locale prefix from slug for URL
+          const slug = post.slug.replace(`${currentLocale}/`, '');
+          return (
+          <div class="col-md-6 col-lg-4">
+            <a href={localeUrl(`/blog/${slug}`)} style="text-decoration: none; color: inherit;">
+              <div class="blog-card">
+                <img src={post.data.thumbnail} alt={post.data.title} class="blog-image">
+                <div class="blog-content">
+                  <h3>{post.data.title}</h3>
+                  <p class="blog-excerpt">{post.data.description}</p>
+                  <div class="blog-meta">
+                    <span class="blog-author">{post.data.author}</span>
+                    <span class="blog-date">{post.data.date}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          );
+        })}
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,85 @@
+{
+  "meta": {
+    "title": "Agora Citizen Network",
+    "description": "Where citizens converge to exchange and debate ideas."
+  },
+  "banner": {
+    "title": "Citizen Network, Rather Than Social Network",
+    "subtitle": "Purposefully designed for civic dialogues",
+    "description": "Where citizens converge to exchange and debate ideas. Let's turn our differences into progress, rather than conflict.",
+    "join_button": "Join the Dialogue",
+    "view_impact_button": "View Our Impact"
+  },
+  "why_agora": {
+    "title": "Why Agora?",
+    "description": "Agora enables citizens, organizations, and governments to engage in meaningful large-scale discussions on social and political issues.",
+    "for_citizens_title": "For citizens",
+    "for_citizens_desc": "Join conversations that matter to you. See where people agree and disagree on complex, divisive topics.",
+    "for_facilitators_title": "For facilitators and organizations",
+    "for_facilitators_desc": "Discover what unites your community. Map disagreement. Measure consensus. Make better decisions."
+  },
+  "features": {
+    "title": "Features",
+    "open_source": "open-source",
+    "exclusively_human_title": "Exclusively Human",
+    "exclusively_human_desc": "Join an environment free from bots and their propaganda",
+    "privacy_first_title": "Privacy First",
+    "privacy_first_desc": "We safeguard your right to anonymity. You can verify your humanity without revealing your identity by using",
+    "depolarizing_algorithms_title": "Depolarizing Algorithms",
+    "depolarizing_algorithms_desc": "Engage with diverse perspectives to build common ground",
+    "open_governance_title": "Open Governance",
+    "open_governance_desc": "Take part in transparent community-driven moderation"
+  },
+  "blog_section": {
+    "title": "Blog",
+    "description": "Impact stories, news, and practical guides for using Agora",
+    "featured_article_title": "Transforming Frustration into Collective Power",
+    "featured_article_desc": "How Agora was used to turn mass mobilization into shared democratic demands during France's #bloquonstout strike.",
+    "featured_article_author": "Agora Team",
+    "featured_article_date": "September 2025",
+    "view_blog_button": "View Our Blog"
+  },
+  "team": {
+    "title": "Our Team",
+    "ceo": "CEO & Co-Founder",
+    "cto": "CTO & Co-Founder",
+    "designer": "Product Designer"
+  },
+  "partners": {
+    "title": "Partners",
+    "eu_funding": "This project has received funding from the European Union's Horizon Europe 2020 research and innovation program through the",
+    "ngi_trustchain": "NGI TRUSTCHAIN",
+    "program_under": "program under cascade funding agreement No. 101093274 and the",
+    "ngi_sargasso": "NGI SARGASSO",
+    "project_under": "project under grant agreement No. 101092887."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "contact_intro": "If your question is not covered, feel free to send us a message via",
+    "discord": "Discord",
+    "telegram": "Telegram",
+    "email": "email",
+    "or": "or",
+    "q1": "What makes Agora different from other social networks?",
+    "a1": "Unlike social networks built for entertainment or casual updates, Agora is purpose-built to foster meaningful dialogue on important, often controversial topics. Tackling complex challenges like polarization, computational propaganda, balancing freedom of expression and moderation, Agora adopts innovative technologies and moves beyond familiar designs like traditional reply trees to encourage a new kind of social interaction that prevents random trolling and is scalable.",
+    "q2": "What is moderation like on Agora?",
+    "a2_intro": "Moderation on Agora covers two types of content:",
+    "a2_objective_title": "Objective:",
+    "a2_objective_desc": "Content that's illegal content or spam, which the Agora moderation team will remove directly.",
+    "a2_subjective_title": "Subjective:",
+    "a2_subjective_desc": "Content flagged as misleading, antisocial, or off-topic, which will be moderated democratically by the community.",
+    "a2_transparency": "We believe in transparency, so even if moderated content is removed from the platform, its moderation history remains publicly accessible (unless it contains illegal material or personal details) and can be verified through a decentralized network,",
+    "q3": "How do you ensure humans only?",
+    "a3": "In a world where bots outnumber humans, Agora aims to maintain the integrity of dialogues while preserving user privacy by encouraging the use of Personhood Credentials. They allow users to prove aspects of their identity, such as unique personhood, age, and citizenship, without disclosing any personal information to us. Currently, our users with biometric passports can download RariMe to convert their passports into anonymous credentials. Due to this temporary technical constraint, we also allow users to verify their identity using their phone numbers.",
+    "q4": "What do depolarizing algorithms mean?",
+    "a4": "Most social networks today use engagement-based ranking algorithms designed to maximize user attention and engagement. Unfortunately, these algorithms often promote polarizing content, which tends to attract the most attention, whether good or bad. In contrast, Agora employs bridging-based ranking algorithms that aim to highlight content appreciated by users across different political viewpoints. The goal is not to censor extreme opinions but to preserve a rich diversity of viewpoints and identify common ground. Other tools utilizing bridging-based algorithms include Community Notes and Polis.",
+    "q5": "What is open-source?",
+    "a5": "Agora is fully open-source under the AGPL license, which means that anyone is invited to review and audit our codebase. This approach maximizes transparency while still allowing us to have a sustainable business model.",
+    "q6": "What is ZKorum?",
+    "a6": "Agora is developed and maintained by ZKorum, a Paris-based startup dedicated to building open-source solutions and products that rehumanize and depolarize online social interactions. ZK refers to the use of Zero Knowledge Proof cryptography to maximize user privacy and ensure security."
+  },
+  "try_now": {
+    "title": "Try Now",
+    "join_button": "Join the Dialogue"
+  }
+}

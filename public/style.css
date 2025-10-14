@@ -49,14 +49,17 @@ dark-blue {
 .navbar .navbar-brand {
 }
 .navbar .nav-item {
-	margin: 0 5px;
+	margin: 0 2px;
 	padding: 0;
 }
 .navbar .nav-item a {
 	color: #090F53;
 	text-transform: uppercase;
 	font-weight: 600;
-	font-size: 13px;
+	font-size: 12px;
+	white-space: nowrap;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 .ml-2 {
 	margin-left: 16px;

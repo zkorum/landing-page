@@ -1,0 +1,83 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  date: string;
+  image?: string;
+}
+
+const { title, description, author, date, image } = Astro.props;
+
+const currentLocale = Astro.currentLocale || 'en';
+
+const localeUrl = (path: string) => {
+  const url = getRelativeLocaleUrl(currentLocale, path);
+  return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+};
+
+// Load translations for blog page
+const translationModules = {
+  'en': () => import('../../public/locales/en/blog.json'),
+  'fr': () => import('../../public/locales/fr/blog.json'),
+  'es': () => import('../../public/locales/es/blog.json'),
+  'ar': () => import('../../public/locales/ar/blog.json'),
+  'ja': () => import('../../public/locales/ja/blog.json'),
+  'zh-hans': () => import('../../public/locales/zh-hans/blog.json'),
+  'zh-hant': () => import('../../public/locales/zh-hant/blog.json'),
+};
+
+const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
+const translations = translationModule.default;
+
+const t = (key: string) => {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+  }
+  return value || key;
+};
+---
+
+<BaseLayout
+  title={`${title} - Agora Citizen Network`}
+  description={description}
+  image={image}
+  type="article"
+>
+  <!-- Article Header -->
+  <section class="blog-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <h1 class="unbounded dark-blue">{title}</h1>
+          <p class="dark-blue">{description}</p>
+          <div class="blog-meta mt-4" style="justify-content: center;">
+            <span class="blog-author">{author}</span>
+            <span class="mx-3">•</span>
+            <span class="blog-date">{date}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="blog-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <slot />
+
+          <div class="mt-5 text-center">
+            <a href={localeUrl("/blog")} class="about-btn">{t("backToImpactStories")}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
