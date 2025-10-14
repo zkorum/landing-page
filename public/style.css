@@ -113,11 +113,10 @@ dark-blue {
 	}
 	.mobile-only-language-switcher {
 		display: block;
-		position: absolute;
+		position: fixed;
 		right: 60px;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 1;
+		top: 32px;
+		z-index: 1031;
 	}
 	.desktop-only-language-switcher {
 		display: none;
