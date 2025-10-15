@@ -108,10 +108,12 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
     display: none;
     z-index: 1000;
     overflow: hidden;
+    pointer-events: none;
   }
 
   .language-dropdown.show {
     display: block;
+    pointer-events: auto;
   }
 
   .language-option {
