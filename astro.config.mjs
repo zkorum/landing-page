@@ -14,10 +14,15 @@ export default defineConfig({
       fallbackType: "rewrite", // Show fallback content without redirecting
     },
     fallback: {
-      // Chinese fallback logic
-      "zh-hant": "zh-hans",
+      // IMPORTANT: This fallback configuration is REQUIRED for Astro to generate pages
+      // for all locales in SSG mode, but the actual fallback behavior does NOT work.
+      // When a translation key is missing, Astro does NOT fall back to the configured
+      // locale - you must implement manual fallback logic in your translation loading code.
+      //
+      // Note: Chained fallback (e.g., "zh-hant": "zh-hans", "zh-hans": "en") prevents
+      // page generation entirely, so all locales must fall back directly to the default locale.
+      "zh-hant": "en",
       "zh-hans": "en",
-      // All other languages fallback to English
       "fr": "en",
       "es": "en",
       "ar": "en",
