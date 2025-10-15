@@ -4,13 +4,13 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 const currentLocale = Astro.currentLocale || 'en';
 
 const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'fr', name: 'Français' },
-  { code: 'es', name: 'Español' },
-  { code: 'ar', name: 'العربية' },
-  { code: 'ja', name: '日本語' },
-  { code: 'zh-hans', name: '简体中文' },
-  { code: 'zh-hant', name: '繁體中文' },
+  { code: 'en', name: 'English', short: 'En' },
+  { code: 'fr', name: 'Français', short: 'Fr' },
+  { code: 'es', name: 'Español', short: 'Es' },
+  { code: 'ar', name: 'العربية', short: 'ع' },
+  { code: 'ja', name: '日本語', short: '日' },
+  { code: 'zh-hans', name: '简体中文', short: '简' },
+  { code: 'zh-hant', name: '繁體中文', short: '繁' },
 ];
 
 // Get the current path without locale prefix, including hash if present
@@ -21,7 +21,8 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
 <div class="language-switcher">
   <button class="language-button" aria-label="Select language">
     <span class="current-language">
-      <span class="language-name">{languages.find(l => l.code === currentLocale)?.name || 'Language'}</span>
+      <span class="language-name language-full">{languages.find(l => l.code === currentLocale)?.name || 'Language'}</span>
+      <span class="language-name language-short">{languages.find(l => l.code === currentLocale)?.short || 'En'}</span>
     </span>
     <i class="fa-solid fa-chevron-down"></i>
   </button>
@@ -87,6 +88,15 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
     font-weight: 400;
   }
 
+  /* Desktop: show full name, hide short code */
+  .language-short {
+    display: none;
+  }
+
+  .language-full {
+    display: inline;
+  }
+
   .language-dropdown {
     position: absolute;
     top: calc(100% + 0.75rem);
@@ -142,12 +152,19 @@ let currentPath = Astro.url.pathname.replace(new RegExp(`^/(${languages.map(l =>
   }
 
   @media (max-width: 768px) {
-    .language-name {
-      display: none;
-    }
-
     .language-switcher {
       margin-left: 1rem;
+    }
+
+    /* Mobile: show short code, hide full name */
+    .language-short {
+      display: inline;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .language-full {
+      display: none;
     }
   }
 </style>
