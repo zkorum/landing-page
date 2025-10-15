@@ -107,16 +107,23 @@ dark-blue {
 	.navbar > .container {
 		position: relative;
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		align-items: center;
 		justify-content: space-between;
 	}
 	.mobile-only-language-switcher {
-		display: block;
-		position: fixed;
-		right: 60px;
-		top: 32px;
-		z-index: 1031;
+		display: flex;
+		align-items: center;
+		order: 2;
+		margin-left: auto;
+		margin-right: 0.75rem;
+	}
+	.navbar-toggler {
+		order: 3;
+		margin-left: 0;
+	}
+	.navbar-brand {
+		order: 1;
 	}
 	.desktop-only-language-switcher {
 		display: none;
