@@ -107,23 +107,32 @@ dark-blue {
 	.navbar > .container {
 		position: relative;
 		display: flex;
-		flex-wrap: nowrap;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
+	}
+	/* Create a row for logo, language switcher, and hamburger */
+	.navbar-brand {
+		order: 1;
+		flex: 0 0 auto;
 	}
 	.mobile-only-language-switcher {
 		display: flex;
 		align-items: center;
 		order: 2;
+		flex: 0 0 auto;
 		margin-left: auto;
 		margin-right: 0.75rem;
 	}
 	.navbar-toggler {
 		order: 3;
+		flex: 0 0 auto;
 		margin-left: 0;
 	}
-	.navbar-brand {
-		order: 1;
+	/* Collapse takes full width on next row */
+	.navbar-collapse {
+		order: 4;
+		flex-basis: 100%;
 	}
 	.desktop-only-language-switcher {
 		display: none;
