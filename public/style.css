@@ -596,6 +596,8 @@ logo {
 	/* color: #fff !important; */
 	text-align: center;
 	padding: 10px 0;
+	position: relative;
+	z-index: 1050;
 }
 .nav-scroll .navbar-collapse {
 	/* background: #fff !important; */
