@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { loadTranslationsWithFallback, createTranslationFunction } from '../utils/i18n';
 
 const currentLocale = Astro.currentLocale || 'en';
 
@@ -9,28 +10,9 @@ const localeUrl = (path: string) => {
   return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
 };
 
-// Load translations for 404 page
-const translationModules = {
-  'en': () => import('../../public/locales/en/404.json'),
-  'fr': () => import('../../public/locales/fr/404.json'),
-  'es': () => import('../../public/locales/es/404.json'),
-  'ar': () => import('../../public/locales/ar/404.json'),
-  'ja': () => import('../../public/locales/ja/404.json'),
-  'zh-hans': () => import('../../public/locales/zh-hans/404.json'),
-  'zh-hant': () => import('../../public/locales/zh-hant/404.json'),
-};
-
-const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
-const translations = translationModule.default;
-
-const t = (key: string) => {
-  const keys = key.split('.');
-  let value: any = translations;
-  for (const k of keys) {
-    value = value?.[k];
-  }
-  return value || key;
-};
+// Load translations with fallback support
+const translations = await loadTranslationsWithFallback(currentLocale, '404');
+const t = createTranslationFunction(translations);
 ---
 
 <BaseLayout

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import { loadTranslationsWithFallback, createTranslationFunction } from '../utils/i18n';
 
 const currentLocale = Astro.currentLocale || 'en';
 
@@ -11,28 +12,9 @@ const localeUrl = (path: string) => {
   return url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
 };
 
-// Load translations for blog page
-const translationModules = {
-  'en': () => import('../../public/locales/en/blog.json'),
-  'fr': () => import('../../public/locales/fr/blog.json'),
-  'es': () => import('../../public/locales/es/blog.json'),
-  'ar': () => import('../../public/locales/ar/blog.json'),
-  'ja': () => import('../../public/locales/ja/blog.json'),
-  'zh-hans': () => import('../../public/locales/zh-hans/blog.json'),
-  'zh-hant': () => import('../../public/locales/zh-hant/blog.json'),
-};
-
-const translationModule = await translationModules[currentLocale as keyof typeof translationModules]();
-const translations = translationModule.default;
-
-const t = (key: string) => {
-  const keys = key.split('.');
-  let value: any = translations;
-  for (const k of keys) {
-    value = value?.[k];
-  }
-  return value || key;
-};
+// Load translations with fallback support
+const translations = await loadTranslationsWithFallback(currentLocale, 'blog');
+const t = createTranslationFunction(translations);
 
 // Filter blog posts by current locale
 const allBlogPosts = await getCollection('blog');
