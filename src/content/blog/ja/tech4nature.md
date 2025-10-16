@@ -7,7 +7,7 @@ thumbnail: "https://iucn.org/sites/default/files/styles/article_image/public/202
 image: "https://iucn.org/sites/default/files/styles/article_image/public/2025-08/006_flona_carajas_joao-marcos-rosac-1.jpg?h=4cc6839d&itok=2_-LFOvZ"
 ---
 
-ブロックチェーン技術は本当に環境保護に役立つのか、それとも実証済みの解決策から注意をそらすだけの技術トレンドなのか?これが、2025年の[Tech4Nature](https://www.tech4nature.org/)の[ブロックチェーン・イノベーション・チャレンジ・ワークショップ](https://iucn.org/blog/202510/spark-spotlight-tech4nature-innovation-journey-continues-shape-conservations-future)における中心的な緊張関係でした。このワークショップでは、環境保護活動家、技術者、政策立案者、学者が集まり、環境保護におけるブロックチェーンの役割を探求しました。
+ブロックチェーン技術は本当に環境保護に役立つのか、それとも実証済みの解決策から注意をそらすだけの技術トレンドなのか?これが、2025年の[Tech4Nature](https://www.tech4nature.org/)の[ブロックチェーン・イノベーション・チャレンジ・ワークショップ](https://iucn.org/blog/202510/spark-spotlight-tech4nature-innovation-journey-continues-shape-conservations-future)における中心的な論点でした。このワークショップでは、環境保護活動家、技術者、政策立案者、学者が集まり、環境保護におけるブロックチェーンの役割を探求しました。
 
 これらの疑問を未解決のまま残すのではなく、主催者は**Agora Citizen Network**を使用して、3時間のオンラインワークショップ中に参加者の視点をリアルタイムでマッピングしました。これにより、従来は二極化した議論が、共有される信念と建設的な意見の相違の両方を明らかにする構造化された会話へと変わりました。
 
@@ -84,7 +84,8 @@ Agoraの分析により、参加者の間に3つの補完的な意見グルー�
 - 持続可能性の懸念にもかかわらずブロックチェーンの必要性を信じる
 - 楽観主義と実用主義の間の中間的な立場を保持
 
-**クラスター化されていない参加者(8名)**は、どのグループにもきちんと当てはまりませんでした。彼らは独自の見解の組み合わせを持っているか、明確なパターンを明らかにするのに十分な声明に投票していませんでした。
+**クラスター化されていない参加者(8名)**
+は、どのグループにもきちんと当てはまりませんでした。彼らは独自の見解の組み合わせを持っているか、明確なパターンを明らかにするのに十分な声明に投票していませんでした。
 
 ## なぜこれが重要か
 

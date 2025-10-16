@@ -49,7 +49,7 @@ Agoraは対面やオンラインでの会議に取って代わるものではな
 
 ## 始める準備はできましたか?
 
-会議、ワークショップ、コミュニティ熟議を計画している場合でも、Agoraはより包括的で洞察に富んだ会話を作成するのに役立ちます。プロジェクトについて話し合い、ファシリテーション目標をどのようにサポートできるかについて、私たちのチームにお問い合わせください。
+会議、ワークショップ、コミュニティ熟議を計画している場合でも、Agoraはより包括的で洞察に富んだ会話を作成するのに役立ちます。プロジェクトについて話し合い、ファシリテーションの目標をどのようにサポートできるかについて、私たちのチームにお問い合わせください。
 
 <div class="mt-5 text-center">
   <a href="mailto:hello@zkorum.com" class="btn-grad text-uppercase" style="text-decoration: none; padding: 0.7rem 2rem; display: inline-block; border-radius: 2rem; margin-bottom: 15px;">お問い合わせ</a>
