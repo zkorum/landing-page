@@ -26,11 +26,9 @@ Los participantes llegaron con diferentes niveles de experiencia técnica y dive
 
 Antes del taller, el organizador preparó la conversación en Agora agregando una lista de opiniones iniciales—declaraciones sobre las que los participantes debían votar—representando diversas perspectivas.
 
-Al inicio de la sesión, el enlace de conversación y el código QR fueron mostrados y distribuidos, permitiendo a los participantes unirse instantáneamente.
-
-A lo largo del evento, el enlace y el código QR se mostraron periódicamente en las pantallas del evento y se compartieron en el chat durante las sesiones en línea.
-
-Después de cada sesión, el organizador alentó la participación en el chat en vivo y compartió aspectos destacados periódicos sobre el consenso emergente y la diversidad de puntos de vista.
+- Al inicio de la sesión, el enlace de conversación y el código QR fueron mostrados y distribuidos, permitiendo a los participantes unirse instantáneamente.
+- A lo largo del evento, el enlace y el código QR se mostraron periódicamente en las pantallas del evento y se compartieron en el chat durante las sesiones en línea.
+- Después de cada sesión, el organizador alentó la participación en el chat en vivo y compartió aspectos destacados periódicos sobre el consenso emergente y la diversidad de puntos de vista.
 
 A lo largo del evento, **27 participantes emitieron 172 votos** sobre diversas declaraciones acerca de blockchain en la conservación. A diferencia de una encuesta tradicional, Agora permitió a los participantes:
 
