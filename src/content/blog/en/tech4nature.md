@@ -24,7 +24,15 @@ Participants came with different levels of technical expertise and varying degre
 
 ## Real-Time Deliberation with Agora
 
-During the workshop, **27 participants cast 172 votes** on various statements about blockchain in conservation. Unlike a traditional poll, Agora allowed participants to:
+Prior to the workshop, the organizer prepared the conversation on Agora by adding a list of seed opinions—statements to be voted on by participants—representing diverse perspectives.
+
+At the start of the session, the conversation link and QR code were displayed and distributed, allowing participants to join instantly.
+
+Throughout the event, the link and QR code were periodically shown on the event screens and shared in the chat during online sessions.
+
+After each session, the organizer encouraged participation in the livestream chat and shared periodic highlights of emerging consensus and diversity of views.
+
+Throughout the event, **27 participants cast 172 votes** on various statements about blockchain in conservation. Unlike a traditional poll, Agora allowed participants to:
 
 - React to each statement with "Agree," "Disagree," or "Unsure"
 - Submit new statements if their perspective wasn't represented
