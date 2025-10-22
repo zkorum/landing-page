@@ -24,7 +24,13 @@ Les participants sont venus avec différents niveaux d'expertise technique et di
 
 ## Délibération en temps réel avec Agora
 
-Pendant l'atelier, **27 participants ont exprimé 172 votes** sur diverses déclarations concernant la blockchain dans la conservation. Contrairement à un sondage traditionnel, Agora a permis aux participants de :
+Avant l'atelier, l'organisateur a préparé la conversation sur Agora en ajoutant une liste d'opinions initiales—des déclarations sur lesquelles les participants devaient voter—représentant diverses perspectives.
+
+- Au début de la session, le lien de conversation et le code QR ont été affichés et distribués, permettant aux participants de rejoindre instantanément.
+- Tout au long de l'événement, le lien et le code QR ont été périodiquement affichés sur les écrans de l'événement et partagés dans le chat lors des sessions en ligne.
+- Après chaque session, l'organisateur a encouragé la participation dans le chat en direct et a partagé des points saillants périodiques sur l'émergence du consensus et la diversité des points de vue.
+
+Tout au long de l'événement, **27 participants ont exprimé 172 votes** sur diverses déclarations concernant la blockchain dans la conservation. Contrairement à un sondage traditionnel, Agora a permis aux participants de :
 
 - Réagir à chaque déclaration avec "D'accord", "Pas d'accord" ou "Incertain"
 - Soumettre de nouvelles déclarations si leur perspective n'était pas représentée
